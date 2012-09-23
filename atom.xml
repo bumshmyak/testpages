@@ -4,7 +4,7 @@
   <title><![CDATA[Lost Exception]]></title>
   <link href="http://bumshmyak.github.com/testpages/atom.xml" rel="self"/>
   <link href="http://bumshmyak.github.com/testpages/"/>
-  <updated>2012-09-24T00:11:24+04:00</updated>
+  <updated>2012-09-24T00:45:54+04:00</updated>
   <id>http://bumshmyak.github.com/testpages/</id>
   <author>
     <name><![CDATA[bumshmyak]]></name>
@@ -53,7 +53,7 @@
             </ul>
         </div>
         <div class="jp-playlist">
-        <ul>
+            <ul>
                 <li></li>
             </ul>
         </div>
@@ -64,9 +64,7 @@
     </div>
 </div>
 
-
-<a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3">whole episode</a> ●
-<a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.zip">tracks archive</a>]]></content>
+<a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3">whole episode</a>]]></content>
   </entry>
   
 </feed>
