@@ -9,8 +9,7 @@
   <meta name="author" content="bumshmyak">
 
   
-  <meta name="description" content=" play pause stop mute unmute previous next whole episode ●
-tracks archive">
+  <meta name="description" content="previous play pause next stop mute unmute max volume shuffle shuffle off repeat repeat off Update Required To play the media you will need to either &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,218 +29,94 @@ tracks archive">
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
-<link type="text/css" href="/testpages/images/skin-dark/jplayer.dark.css" rel="stylesheet" />
+<link type="text/css" href="/testpages/images/midnight.black/jplayer.midnight.black.css" rel="stylesheet" />
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 <script src="/testpages/assets/jplayer/jquery.jplayer.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/testpages/assets/jplayer/add-on/jplayer.playlist.min.js"></script>
+
 
 <script type="text/javascript">
+//<![CDATA[
 $(document).ready(function(){
-    var Playlist = function(instance, playlist, options) {
-        var self = this;
-
-        this.instance = instance; // String: To associate specific HTML with this playlist
-        this.playlist = playlist; // Array of Objects: The playlist
-        this.options = options; // Object: The jPlayer constructor options for this playlist
-
-        this.current = 0;
-
-        this.cssId = {
-            jPlayer: "jquery_jplayer_",
-            interface: "jp_interface_",
-            playlist: "jp_playlist_"
-        };
-        this.cssSelector = {};
-
-        $.each(this.cssId, function(entity, id) {
-            self.cssSelector[entity] = "#" + id + self.instance;
-        });
-
-        if(!this.options.cssSelectorAncestor) {
-            this.options.cssSelectorAncestor = this.cssSelector.interface;
-        }
-
-        $(this.cssSelector.jPlayer).jPlayer(this.options);
-
-        $(this.cssSelector.interface + " .jp-previous").click(function() {
-            self.playlistPrev();
-            $(this).blur();
-            return false;
-        });
-
-        $(this.cssSelector.interface + " .jp-next").click(function() {
-            self.playlistNext();
-            $(this).blur();
-            return false;
-        });
-    };
-
-    Playlist.prototype = {
-        displayPlaylist: function() {
-            var self = this;
-            $(this.cssSelector.playlist + " ul").empty();
-            for (i=0; i < this.playlist.length; i++) {
-                var listItem = (i === this.playlist.length-1) ? "<li class='jp-playlist-last'>" : "<li>";
-                listItem += "<a href='#' id='" + this.cssId.playlist + this.instance + "_item_" + i +"' tabindex='1'>"+ this.playlist[i].name +"</a>";
-
-                // Create links to free media
-                if(this.playlist[i].free) {
-                    var first = true;
-                    listItem += "<div class='jp-free-media'>(";
-                    $.each(this.playlist[i], function(property,value) {
-                        if($.jPlayer.prototype.format[property]) { // Check property is a media format.
-                            if(first) {
-                                first = false;
-                            } else {
-                                listItem += " | ";
-                            }
-                            listItem += "<a id='" + self.cssId.playlist + self.instance + "_item_" + i + "_" + property + "' href='" + value + "' tabindex='1'>" + property + "</a>";
-                        }
-                    });
-                    listItem += ")</span>";
-                }
-
-                listItem += "</li>";
-
-                // Associate playlist items with their media
-                $(this.cssSelector.playlist + " ul").append(listItem);
-                $(this.cssSelector.playlist + "_item_" + i).data("index", i).click(function() {
-                    var index = $(this).data("index");
-                    if(self.current !== index) {
-                        self.playlistChange(index);
-                    } else {
-                        $(self.cssSelector.jPlayer).jPlayer("play");
-                    }
-                    $(this).blur();
-                    return false;
-                });
-
-                // Disable free media links to force access via right click
-                if(this.playlist[i].free) {
-                    $.each(this.playlist[i], function(property,value) {
-                        if($.jPlayer.prototype.format[property]) { // Check property is a media format.
-                            $(self.cssSelector.playlist + "_item_" + i + "_" + property).data("index", i).click(function() {
-                                var index = $(this).data("index");
-                                $(self.cssSelector.playlist + "_item_" + index).click();
-                                $(this).blur();
-                                return false;
-                            });
-                        }
-                    });
-                }
-            }
-        },
-        playlistInit: function(autoplay) {
-            if(autoplay) {
-                this.playlistChange(this.current);
-            } else {
-                this.playlistConfig(this.current);
-            }
-        },
-        playlistConfig: function(index) {
-            $(this.cssSelector.playlist + "_item_" + this.current).removeClass("jp-playlist-current").parent().removeClass("jp-playlist-current");
-            $(this.cssSelector.playlist + "_item_" + index).addClass("jp-playlist-current").parent().addClass("jp-playlist-current");
-            this.current = index;
-            $(this.cssSelector.jPlayer).jPlayer("setMedia", this.playlist[this.current]);
-        },
-        playlistChange: function(index) {
-            this.playlistConfig(index);
-            $(this.cssSelector.jPlayer).jPlayer("play");
-        },
-        playlistNext: function() {
-            var index = (this.current + 1 < this.playlist.length) ? this.current + 1 : 0;
-            this.playlistChange(index);
-        },
-        playlistPrev: function() {
-            var index = (this.current - 1 >= 0) ? this.current - 1 : this.playlist.length - 1;
-            this.playlistChange(index);
-        }
-    };
-
-    var audioPlaylist = new Playlist("2", [
+    new jPlayerPlaylist({
+        jPlayer: "#jquery_jplayer_1",
+        cssSelectorAncestor: "#jp_container_1"
+    }, [
         {
-            name:"The Developing - From a Window",
+            title:"The Developing - From a Window",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/01+-+The+Developing+-+From+A+Window.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/01+-+The+Developing+-+From+A+Window.ogg"
         },
         {
-            name:"Hooverphonic - Anger Never Dies",
+            title:"Hooverphonic - Anger Never Dies",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/02+-+Hooverphonic+-+Anger+Never+Dies.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/02+-+Hooverphonic+-+Anger+Never+Dies.ogg"
         },
         {
-            name:"Metaform - Urban Velvet",
+            title:"Metaform - Urban Velvet",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/03+-+Metaform+-+Urban+Velvet.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/03+-+Metaform+-+Urban+Velvet.ogg"
         },
         {
-            name:"Morcheeba - Otherwise",
+            title:"Morcheeba - Otherwise",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/04+-+Morcheeba+-+Otherwise.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/04+-+Morcheeba+-+Otherwise.ogg"
         },
         {
-            name:"I am Robot and proud - 401 Curcuit",
+            title:"I am Robot and proud - 401 Curcuit",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/05+I+am+Robot+and+proud+-+401+Circuit.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/05+I+am+Robot+and+proud+-+401+Circuit.ogg"
         },
         {
-            name:"Flunk - Sit Down",
+            title:"Flunk - Sit Down",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/06+-+Flunk+-+Sit+Down.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/06+-+Flunk+-+Sit+Down.ogg"
         },
         {
-            name:"Emancipator - Siren (Tor Remix)",
+            title:"Emancipator - Siren (Tor Remix)",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/07+-+Emancipator+-+Siren+(Tor+Remix).mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/07+-+Emancipator+-+Siren+(Tor+Remix).ogg"
         },
         {
-            name:"Elsiane - Nobody Knows",
+            title:"Elsiane - Nobody Knows",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/08+-+Elsiane+-+Nobody+Knows.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/08+-+Elsiane+-+Nobody+Knows.ogg"
         },
         {
-            name:"Jakuzzi Project - U'n'U (PanDub Bear Remix)",
+            title:"Jakuzzi Project - U'n'U (PanDub Bear Remix)",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/09+-+Jacuzzi+Project+-+U%27n%27U+(PanDub+Bear+Mix).mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/09+-+Jacuzzi+Project+-+U%27n%27U+(PanDub+Bear+Mix).ogg"
         },
         {
-            name:"Groove Armada - My Friend",
+            title:"Groove Armada - My Friend",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/10+-+Groove+Armada+-+My+Friend.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/10+-+Groove+Armada+-+My+Friend.ogg"
         },
         {
-            name:"Philter - Haunting",
+            title:"Philter - Haunting",
             free:true,
             mp3:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/11+-+Philter+-+Haunting.mp3",
             oga:"https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1/11+-+Philter+-+Haunting.ogg"
         }
     ], {
-        ready: function() {
-            audioPlaylist.displayPlaylist();
-            audioPlaylist.playlistInit(false); // Parameter is a boolean for autoplay.
-        },
-        ended: function() {
-            audioPlaylist.playlistNext();
-        },
-        play: function() {
-            $(this).jPlayer("pauseOthers");
-        },
-        swfPath: "js",
-        supplied: "oga, mp3"
+        swfPath: "/testpages/assets/jplayer",
+        supplied: "oga, mp3",
+        wmode: "window"
     });
 });
+//]]>
 </script>
-
   
 
 </head>
@@ -303,17 +178,20 @@ $(document).ready(function(){
   </header>
 
 
-<div class="entry-content"><div class="jp-audio">
+<div class="entry-content"><div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+<div id="jp_container_1" class="jp-audio">
     <div class="jp-type-playlist">
-        <div id="jp_interface_2" class="jp-interface">
+        <div class="jp-gui jp-interface">
             <ul class="jp-controls">
-                <li><a href="#" class="jp-play" tabindex="1">play</a></li>
-                <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
-                <li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
-                <li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
-                <li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
-                <li><a href="#" class="jp-previous" tabindex="1">previous</a></li>
-                <li><a href="#" class="jp-next" tabindex="1">next</a></li>
+                <li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+                <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+                <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+                <li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+                <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+                <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+                <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
             </ul>
             <div class="jp-progress">
                 <div class="jp-seek-bar">
@@ -323,19 +201,29 @@ $(document).ready(function(){
             <div class="jp-volume-bar">
                 <div class="jp-volume-bar-value"></div>
             </div>
-            <div class="jp-current-time"></div>
-            <div class="jp-duration"></div>
+            <div class="jp-time-holder">
+                <div class="jp-current-time"></div>
+                <div class="jp-duration"></div>
+            </div>
+            <ul class="jp-toggles">
+                <li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+                <li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+                <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+                <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+            </ul>
         </div>
-        <div id="jp_playlist_2" class="jp-playlist">
-            <ul>
-                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+        <div class="jp-playlist">
+        <ul>
                 <li></li>
             </ul>
+        </div>
+        <div class="jp-no-solution">
+            <span>Update Required</span>
+            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
         </div>
     </div>
 </div>
 
-<div id="jquery_jplayer_2" class="jp-jplayer"></div>
 
 <a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3">whole episode</a> ●
 <a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.zip">tracks archive</a></div>
