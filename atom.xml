@@ -4,7 +4,7 @@
   <title><![CDATA[Lost Exception]]></title>
   <link href="http://bumshmyak.github.com/testpages/atom.xml" rel="self"/>
   <link href="http://bumshmyak.github.com/testpages/"/>
-  <updated>2012-09-24T00:45:54+04:00</updated>
+  <updated>2012-11-18T01:20:36+04:00</updated>
   <id>http://bumshmyak.github.com/testpages/</id>
   <author>
     <name><![CDATA[bumshmyak]]></name>
@@ -14,20 +14,35 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Ok, Go!]]></title>
-    <link href="http://bumshmyak.github.com/testpages/blog/2012/09/22/hello-world/"/>
-    <updated>2012-09-22T11:17:00+04:00</updated>
-    <id>http://bumshmyak.github.com/testpages/blog/2012/09/22/hello-world</id>
-    <content type="html"><![CDATA[<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+    <title type="html"><![CDATA[Второй пошел]]></title>
+    <link href="http://bumshmyak.github.com/testpages/blog/2012/11/17/second/"/>
+    <updated>2012-11-17T22:30:00+04:00</updated>
+    <id>http://bumshmyak.github.com/testpages/blog/2012/11/17/second</id>
+    <content type="html"><![CDATA[<script type="text/javascript">
+$(document).ready(function(){
+    $("#jquery_jplayer_2").jPlayer({
+        ready: function (event) {
+            $(this).jPlayer("setMedia", {
+                mp3: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode2.mp3",
+                oga: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode2.oga",
+            });
+        },
+        cssSelectorAncestor: "#jp_container_2",
+        swfPath: "/assets/jplayer",
+        supplied: "oga, mp3",
+        wmode: "window"
+    });
+});
+</script>
 
-<div id="jp_container_1" class="jp-audio">
-    <div class="jp-type-playlist">
+<div id="jquery_jplayer_2" class="jp-jplayer"></div>
+
+<div id="jp_container_2" class="jp-audio">
+    <div class="jp-type-single">
         <div class="jp-gui jp-interface">
             <ul class="jp-controls">
-                <li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
                 <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
                 <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-                <li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
                 <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
                 <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
                 <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
@@ -41,20 +56,11 @@
             <div class="jp-volume-bar">
                 <div class="jp-volume-bar-value"></div>
             </div>
-            <div class="jp-time-holder">
-                <div class="jp-current-time"></div>
-                <div class="jp-duration"></div>
-            </div>
-            <ul class="jp-toggles">
-                <li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
-                <li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
-                <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-                <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-            </ul>
+            <div class="jp-duration"></div>
         </div>
-        <div class="jp-playlist">
+        <div class="jp-title">
             <ul>
-                <li></li>
+                <li>Lost exception #2</li>
             </ul>
         </div>
         <div class="jp-no-solution">
@@ -64,7 +70,103 @@
     </div>
 </div>
 
-<a href="https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3">whole episode</a>]]></content>
+<p>
+    <div class="playlist">
+        <table>
+            <tr><td>1. Ennio Morricone - Ecstasy of Gold</tr></td>
+            <tr><td>2. The Heavy - Short Change Hero</tr></td>
+            <tr><td>3. Daniel Licht - Intro Perk Walk</tr></td>
+            <tr><td>4. Mai Yamane - Don&#8217;t Bother None (Long Version)</tr></td>
+            <tr><td>5. Cage the Elephant - Ain&#8217;t no Rest for the Wicked</tr></td>
+            <tr><td>6. Yasushi Ishii - Japanese Alphabet Road with Chinese Bellflower&#8217;s
+Sweet Smell</tr></td>
+            <tr><td>7. Everlast - Today (Watch Me Shine)</tr></td>
+            <tr><td>8. Yasushi Ishii - Pure Death</tr></td>
+            <tr><td>9. Johnny Cash - Hurt</tr></td>
+            <tr><td>10. Louis Bacalov - The Grand Duel (Parte Prima)</tr></td>
+            <tr><td>11. Tito and Tarantula - After Dark</tr></td>
+            <tr><td>12. Daniel Licht - Hide your Tears</tr></td>
+            <tr><td>13. Valve Studio Orchestra - More Gun</tr></td>
+        </table>
+    </div>
+</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ok, Go!]]></title>
+    <link href="http://bumshmyak.github.com/testpages/blog/2012/09/22/hello-world/"/>
+    <updated>2012-09-22T11:17:00+04:00</updated>
+    <id>http://bumshmyak.github.com/testpages/blog/2012/09/22/hello-world</id>
+    <content type="html"><![CDATA[<script type="text/javascript">
+$(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+        ready: function (event) {
+            $(this).jPlayer("setMedia", {
+                mp3: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3",
+                oga: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.oga",
+            });
+        },
+        cssSelectorAncestor: "#jp_container_1",
+        swfPath: "/assets/jplayer",
+        supplied: "oga, mp3",
+        wmode: "window"
+    });
+});
+</script>
+
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+<div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+        <div class="jp-gui jp-interface">
+            <ul class="jp-controls">
+                <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+                <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+                <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+                <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+                <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+            </ul>
+            <div class="jp-progress">
+                <div class="jp-seek-bar">
+                    <div class="jp-play-bar"></div>
+
+                </div>
+            </div>
+            <div class="jp-volume-bar">
+                <div class="jp-volume-bar-value"></div>
+            </div>
+            <div class="jp-duration"></div>
+        </div>
+        <div class="jp-title">
+            <ul>
+                <li>Lost exception #1</li>
+            </ul>
+        </div>
+        <div class="jp-no-solution">
+            <span>Update Required</span>
+            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+        </div>
+    </div>
+</div>
+
+<p>
+    <div class="playlist">
+        <table>
+            <tr><td>1. The Developing - From a Window</tr></td>
+            <tr><td>2. Hooverphonic - Anger Never Dies</tr></td>
+            <tr><td>3. Metaform - Urban Velvet</tr></td>
+            <tr><td>4. Morcheeba - Otherwise</tr></td>
+            <tr><td>5. I am Robot and proud - 401 Curcuit</tr></td>
+            <tr><td>6. Flunk - Sit Down</tr></td>
+            <tr><td>7. Emancipator - Siren (Tor Remix)</tr></td>
+            <tr><td>8. Elsiane - Nobody Knows</tr></td>
+            <tr><td>9. Jakuzzi Project - U&#8217;n&#8217;U (PanDub Bear Remix)</tr></td>
+            <tr><td>10. Groove Armada - My Friend</tr></td>
+            <tr><td>11. Philter - Haunting</tr></td>
+        </table>
+    </div>
+</p>]]></content>
   </entry>
   
 </feed>
