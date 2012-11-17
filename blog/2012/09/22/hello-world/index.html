@@ -106,13 +106,13 @@ $(document).ready(function(){
     $("#jquery_jplayer_1").jPlayer({
         ready: function (event) {
             $(this).jPlayer("setMedia", {
-                mp3: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.mp3",
-                oga: "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-336668106364/episode1.oga",
+                mp3: "https://dl.dropbox.com/s/4p9794dlydz8kxb/episode1.mp3",
+                oga: "https://dl.dropbox.com/s/ij730h5wu327p6m/episode1.oga",
             });
         },
         cssSelectorAncestor: "#jp_container_1",
         swfPath: "/assets/jplayer",
-        supplied: "oga, mp3",
+        supplied: "mp3, oga",
         wmode: "window"
     });
 });
@@ -140,7 +140,10 @@ $(document).ready(function(){
             <div class="jp-volume-bar">
                 <div class="jp-volume-bar-value"></div>
             </div>
-            <div class="jp-duration"></div>
+            <div class="jp-time-holder">
+                <div class="jp-current-time"></div>
+                <div class="jp-duration"></div>
+            </div>
         </div>
         <div class="jp-title">
             <ul>
