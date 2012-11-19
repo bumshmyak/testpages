@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://bumshmyak.github.com/testpages/blog/2012/09/22/hello-world/</loc>
+        <loc>http://lostexception.ru/blog/2012/09/22/hello-world/</loc>
         <lastmod>2012-11-18T02:11:47+04:00</lastmod>
     </url>
     <url>
-        <loc>http://bumshmyak.github.com/testpages/blog/2012/11/17/second/</loc>
+        <loc>http://lostexception.ru/blog/2012/11/17/second/</loc>
         <lastmod>2012-11-18T02:22:09+04:00</lastmod>
     </url>
     <url>
-        <loc>http://bumshmyak.github.com/testpages/</loc>
+        <loc>http://lostexception.ru/</loc>
         <lastmod>2012-11-18T02:22:09+04:00</lastmod>
     </url>
     <url>
-        <loc>http://bumshmyak.github.com/testpages/blog/archives/</loc>
+        <loc>http://lostexception.ru/blog/archives/</loc>
         <lastmod>2012-11-18T02:22:09+04:00</lastmod>
     </url>
 </urlset>
