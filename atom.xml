@@ -4,7 +4,7 @@
   <title><![CDATA[Lost Exception]]></title>
   <link href="http://lostexception.ru/atom.xml" rel="self"/>
   <link href="http://lostexception.ru/"/>
-  <updated>2012-12-30T12:05:09+04:00</updated>
+  <updated>2012-12-30T12:05:55+04:00</updated>
   <id>http://lostexception.ru/</id>
   <author>
     <name><![CDATA[bumshmyak and vykers]]></name>
@@ -63,7 +63,7 @@ $(document).ready(function(){
         </div>
         <div class="jp-title">
             <ul>
-                <li>Lost exception #3</li>
+                <li>Lost exception #4</li>
             </ul>
         </div>
         <div class="jp-no-solution">
