@@ -4,7 +4,7 @@
   <title><![CDATA[Lost Exception]]></title>
   <link href="http://lostexception.ru/atom.xml" rel="self"/>
   <link href="http://lostexception.ru/"/>
-  <updated>2013-01-18T21:49:26+04:00</updated>
+  <updated>2013-01-18T21:55:09+04:00</updated>
   <id>http://lostexception.ru/</id>
   <author>
     <name><![CDATA[vykers]]></name>
@@ -30,7 +30,8 @@ $(document).ready(function(){
         cssSelectorAncestor: "#jp_container_5",
         swfPath: "/assets/jplayer",
         supplied: "oga, mp3",
-        wmode: "window"
+        wmode: "window",
+        preload: "none"
     });
 });
 </script>
